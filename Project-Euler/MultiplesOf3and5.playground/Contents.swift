@@ -16,11 +16,8 @@
 
 var runningSum: Int = 0
 
-for var x in 1...999 {
-    if x % 3 == 0 || x % 5 == 0{
+for var x in 1...999  where x % 3 == 0 || x % 5 == 0 {
         runningSum += x
-    }
-    x += 1
 }
 
 print(runningSum)
