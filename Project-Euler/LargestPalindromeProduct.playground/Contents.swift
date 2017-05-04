@@ -6,9 +6,8 @@
  Project Euler.net
  https://projecteuler.net/problem=4
  
- Multiples of 3 and 5
- 
  Largest palindrome product
+ 
  Problem 4
  A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
  
@@ -58,10 +57,6 @@ func exponent(number:Int, power: Int) -> Int {
     return result
 }
 
-enum err : Error {
-    case numDigitsError(String)
-}
-
 func findLargestPlalindromeProductFor(numberOfDigits: Int)  {
 
     // Concept behind this fucntion is to be able to reuse it, not just find the answer to the problem
@@ -97,5 +92,4 @@ func findLargestPlalindromeProductFor(numberOfDigits: Int)  {
     print("First Number:\(firstNumber)\nSecond Number:\(secondNumber)\nProduct:\(product)")
 }
 
-isPalindrome(number: 8556)
 findLargestPlalindromeProductFor(numberOfDigits: 3)
