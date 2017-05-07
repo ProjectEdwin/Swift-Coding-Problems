@@ -26,7 +26,7 @@ func isPalindrome(number: Int) -> Bool{
     // compare the first and last character
     var tempCharacters = characters
     
-    if tempCharacters.first == tempCharacters.last {
+    if tempCharacters.count > 1 && tempCharacters.first == tempCharacters.last {
         repeat {
             tempCharacters.removeFirst()
             tempCharacters.removeLast()
@@ -57,7 +57,7 @@ func exponent(number:Int, power: Int) -> Int {
     return result
 }
 
-func findLargestPlalindromeProductFor(numberOfDigits: Int)  {
+func findLargestPlalindromeProductFor(numberOfDigits: Int) -> Int  {
 
     // Concept behind this fucntion is to be able to reuse it, not just find the answer to the problem
     var startingNumber = 9
@@ -74,22 +74,30 @@ func findLargestPlalindromeProductFor(numberOfDigits: Int)  {
     var secondNumber = startingNumber
     var product = Int()
     
+    var resultsArray = [Int]()
+    
     repeat {
         product = firstNumber * secondNumber
 
         if isPalindrome(number: product) {
-            break
-        } else {
-            secondNumber = secondNumber - 1
+            print("First Number:\(firstNumber)\nSecond Number:\(secondNumber)\nProduct:\(product)")
+            resultsArray.append(product)
+            
         }
-        
+        secondNumber = secondNumber - 1
         if secondNumber == 0 {
             firstNumber = firstNumber - 1
-            secondNumber = firstNumber - 1
+            secondNumber = firstNumber
         }
-    } while !isPalindrome(number: product)
+    } while firstNumber > exponent(number: 1, power: numberOfDigits)
+
+    print("First Number:\(firstNumber), Second Number:\(secondNumber), Product:\(product)")
+    resultsArray = resultsArray.sorted { $0 < $1 }
+    print(resultsArray)
+    return resultsArray.last!
     
-    print("First Number:\(firstNumber)\nSecond Number:\(secondNumber)\nProduct:\(product)")
 }
 
 findLargestPlalindromeProductFor(numberOfDigits: 3)
+
+
